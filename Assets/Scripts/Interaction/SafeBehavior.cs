@@ -35,6 +35,8 @@ public class SafeBehavior : MonoBehaviour, IInteractable
     {
         _safeDoor.localRotation = Quaternion.Euler(_safeDoorOpenRotation);
         Interact();
+        var collider = GetComponent<Collider>();
+        collider.enabled = false;
         Destroy(this);
     }
 }
