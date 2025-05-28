@@ -134,6 +134,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a4a0ed5701641cdb5772348ef6aff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _safeDoor: {fileID: 3599539683139125692}
+  _codeInputController: {fileID: 0}
+  _player: {fileID: 0}
 --- !u!65 &7514543322960990577
 BoxCollider:
   m_ObjectHideFlags: 0

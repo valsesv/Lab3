@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class SafeBehavior : MonoBehaviour, IInteractable
 {
+    [SerializeField] private GameObject _safeDoor;
+    [SerializeField] private CodeInputController _codeInputController;
+    [SerializeField] private SimpleFPS _player;
+    private bool _isInteracting = false;
     private string _code;
 
     public string Code => _code;
@@ -18,6 +22,9 @@ public class SafeBehavior : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Debug.Log("Interact with Safe");
+        _isInteracting = !_isInteracting;
+
+        _codeInputController.gameObject.SetActive(_isInteracting);
+        _player.enabled = !_isInteracting;
     }
 }

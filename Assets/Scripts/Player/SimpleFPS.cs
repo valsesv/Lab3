@@ -13,10 +13,14 @@ public class SimpleFPS : MonoBehaviour
     private bool _isGrounded;
     private float _yRotation = 0f;
 
-
-    private void Awake()
+    private void OnEnable()
     {
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void OnDisable()
+    {
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void Update()
