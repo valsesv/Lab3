@@ -1,9 +1,20 @@
+using TMPro;
 using UnityEngine;
 
 public class TVBehaviour : MonoBehaviour, IInteractable
 {
+    [SerializeField] private SafeBehavior _safe;
+    [SerializeField] private GameObject _screenObject;
+    [SerializeField] private TextMeshPro _codeDisplay;
+
+    private void Start()
+    {
+        _screenObject.SetActive(false);
+        _codeDisplay.text = _safe.Code;
+    }
+
     public void Interact()
     {
-        Debug.Log("Interact with TV");
+        _screenObject.SetActive(!_screenObject.activeSelf);
     }
 }
