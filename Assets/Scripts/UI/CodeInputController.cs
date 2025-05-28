@@ -44,10 +44,13 @@ public class CodeInputController : MonoBehaviour
 
     private void OnEnterButtonClick()
     {
-        if (_safeBehavior.EnterCode(_codeDisplay.text) == false)
+        if (_safeBehavior.Code != _codeDisplay.text)
         {
             _codeDisplay.text = "Wrong";
+            return;
         }
+
+        _safeBehavior.OpenSafe();
     }
 
     private void OnClearButtonClick()

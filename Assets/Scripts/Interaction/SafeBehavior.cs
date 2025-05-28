@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class SafeBehavior : MonoBehaviour, IInteractable
 {
-    [SerializeField] private GameObject _safeDoor;
+    [SerializeField] private Transform _safeDoor;
+    [SerializeField] private Vector3 _safeDoorOpenRotation;
     [SerializeField] private CodeInputController _codeInputController;
     [SerializeField] private SimpleFPS _player;
     private bool _isInteracting = false;
@@ -30,8 +31,10 @@ public class SafeBehavior : MonoBehaviour, IInteractable
         _player.enabled = !_isInteracting;
     }
 
-    public bool EnterCode(string code)
+    public void OpenSafe()
     {
-        return code == _code;
+        _safeDoor.localRotation = Quaternion.Euler(_safeDoorOpenRotation);
+        Interact();
+        Destroy(this);
     }
 }
