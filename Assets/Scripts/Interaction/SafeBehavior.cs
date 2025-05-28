@@ -12,12 +12,14 @@ public class SafeBehavior : MonoBehaviour, IInteractable
 
     private void Awake()
     {
-        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const string chars = "0123456789";
         _code = "";
         for (int i = 0; i < 4; i++)
         {
             _code += chars[Random.Range(0, chars.Length)];
         }
+        _codeInputController.gameObject.SetActive(_isInteracting);
+        _codeInputController.SetSafeBehavior(this);
     }
 
     public void Interact()
@@ -26,5 +28,10 @@ public class SafeBehavior : MonoBehaviour, IInteractable
 
         _codeInputController.gameObject.SetActive(_isInteracting);
         _player.enabled = !_isInteracting;
+    }
+
+    public bool EnterCode(string code)
+    {
+        return code == _code;
     }
 }
